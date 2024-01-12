@@ -16,3 +16,8 @@ h1 {
 i{
     cursor: pointer;
 }
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid greenyellow ;
+}
