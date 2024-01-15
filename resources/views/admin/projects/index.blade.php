@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
-        <h1>Projects List</h1>
+
+    <section class="container card p-5 mt-5 ">
+        <h1 class="text-center">Projects List</h1>
 
         @if (!empty(session('message')))
             <div class="alert alert-success" role="alert">
@@ -17,7 +18,7 @@
                 <tr>
                     <th scope="col w-75">TITOLO</th>
 
-                    <th scope="col text-danger w-25">OPERAZIONI</th>
+                    <th scope="col text-danger w-100 d-flex justify-content-end" style="text-align: end; padding-right: 20px;">OPERAZIONI</th>
                 </tr>
             </thead>
 
@@ -39,9 +40,9 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-danger cancel-button" type="submit"
-                                    style="outline: none; border: 0; background: white;">
-                                    <span class="text-decoration-underline text-success cancel-button">show</span></button>
+                                <button class="btn btn-success cancel-button" type="submit">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
 
                             </form>
 
@@ -49,9 +50,9 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-danger cancel-button" type="submit"
-                                    style="outline: none; border: 0; background: white;">
-                                    <span class="text-decoration-underline text-warning cancel-button">edit</span></button>
+                                <button class="btn btn-warning cancel-button" type="submit">
+                                    <i class="fa-solid fa-wrench"></i>
+                                </button>
 
                             </form>
 
@@ -59,12 +60,13 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger cancel-button" type="submit"
-                                    style="outline: none; border: 0; background: white;">
-                                    <span class="text-decoration-underline text-danger cancel-button">Delete</span></button>
-
+                                <button class="btn btn-danger cancel-button delete-button" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
                             </form>
+
+
                         </td>
+                        @include('partials.modal_delete')
 
                     </tr>
                 @endforeach
@@ -72,9 +74,9 @@
 
         </table>
 
-        <button class="btn btn-primary mt-3">
-            <a class="text-white text-decoration-none" href="{{ route('admin.projects.create') }}">Create</a>
+        <button class="btn btn-primary mt-3 d-block" >
+            <a class="text-white text-decoration-none " style="width: fit-content;" href="{{ route('admin.projects.create') }}">Create</a>
         </button>
     </section>
-    @include('partials.modal_delete')
+
 @endsection

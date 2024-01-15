@@ -19,7 +19,9 @@ class ProjectSeeder extends Seeder
         foreach ($projects as $project) {
             $newProject = new Project();
             //$newProject->image = $project['image'];
-            $newProject->image = ProjectSeeder::storeimage($project['image'], $project['title']);
+            if ($project['image']) {
+                $newProject->image = ProjectSeeder::storeimage($project['image'], $project['title']);
+            }
             $newProject->github = $project['github'];
             $newProject->title = $project['title'];
             $newProject->body = $project['body'];

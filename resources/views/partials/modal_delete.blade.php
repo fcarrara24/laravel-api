@@ -3,15 +3,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="deleteModalLabel">Attenzione</h1>
+                <h2 class="modal-title fs-5" id="deleteModalLabel">Attenzione</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Confermi di voler eliminare <span id="modal-item-title"></span>?</p>
+                <p>Confermi di voler eliminare questo progetto <span id="modal-item-title"></span>?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button type="button" class="btn btn-danger">Elimina</button>
             </div>
         </div>
     </div>

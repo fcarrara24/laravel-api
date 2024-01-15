@@ -9,8 +9,25 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 @import '~bootstrap/scss/bootstrap';
 
+// h1 {
+//     color: $text-color;
+
+// }
+.navbar{
+    background-color: aqua;
+    a{
+        color: white;
+
+    }
+}
+
 h1 {
-    color: $text-color;
+    font-size: 72px;
+    background: -webkit-linear-gradient(orange, gold);
+    -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: brown;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 i{
@@ -19,5 +36,31 @@ i{
 
 .nav-link.active {
     font-weight: bold;
-    border-bottom: 2px solid greenyellow ;
+    color: greenyellow!important;
+    //border: 2px solid greenyellow ;
 }
+
+
+form{
+    margin-left: 10px;
+}
+
+
+.framed{
+    border: 10px solid;
+    border-image: linear-gradient(45deg,red,blue) 10;
+    img{
+        min-width: 100%;
+    }
+}
+
+
+.dropdown-item{
+    color: blue!important;
+    &:hover{
+        background-color: aqua;
+        color: white;
+    }
+}
+
+

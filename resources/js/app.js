@@ -6,6 +6,8 @@ import.meta.glob(["../img/**", "../fonts/**"]);
 const deleteSubmitButtons = document.querySelectorAll(".delete-button");
 
 deleteSubmitButtons.forEach((button) => {
+
+
     button.addEventListener("click", (event) => {
         event.preventDefault();
 
