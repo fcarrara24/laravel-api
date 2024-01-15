@@ -15,10 +15,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Titolo</th>
-                    <th scope="col text-success">Mostra</th>
-                    <th scope="col text-warning">Modifica</th>
-                    <th scope="col text-danger">Cancella</th>
+                    <th scope="col w-75">TITOLO</th>
+
+                    <th scope="col text-danger w-25">OPERAZIONI</th>
                 </tr>
             </thead>
 
@@ -28,17 +27,33 @@
                 @foreach ($projects as $project)
                     <tr>
                         <td>{{ $project->title }}</td>
-                        <td>
-                            <a href="{{ route('admin.projects.show', $project->slug) }}" class="text-success">
+
+                        <td class="d-flex flex-row justify-content-end align-items-center">
+                            {{-- <a href="{{ route('admin.projects.show', $project->slug) }}" class="text-success">
                                 mostra
                             </a>
-                        </td>
-                        <td>
                             <a href="{{ route('admin.projects.edit', $project->slug) }}" class="text-warning">
                                 modifica
-                            </a>
-                        </td>
-                        <td>
+                            </a> --}}
+                            <form class="d-inline-block" action="{{ route('admin.projects.show', $project->slug) }}"
+                                method="GET">
+                                @csrf
+
+                                <button class="btn btn-danger cancel-button" type="submit"
+                                    style="outline: none; border: 0; background: white;">
+                                    <span class="text-decoration-underline text-success cancel-button">show</span></button>
+
+                            </form>
+
+                            <form class="d-inline-block" action="{{ route('admin.projects.edit', $project->slug) }}"
+                                method="GET">
+                                @csrf
+
+                                <button class="btn btn-danger cancel-button" type="submit"
+                                    style="outline: none; border: 0; background: white;">
+                                    <span class="text-decoration-underline text-warning cancel-button">edit</span></button>
+
+                            </form>
 
                             <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->slug) }}"
                                 method="POST">

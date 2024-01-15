@@ -77,6 +77,7 @@ class ProjectController extends Controller
             $formData['slug'] = $slug;
         }
         $formData['user_id'] = $project->user_id;
+
         if ($request->hasFile('image')) {
             if ($project->image) {
                 Storage::delete($project->image);
@@ -84,6 +85,7 @@ class ProjectController extends Controller
             $path = Storage::put('images', $request->image);
             $formData['image'] = $path;
         }
+
         $project->update($formData);
         return redirect()->route('admin.projects.show', $project->slug);
     }
