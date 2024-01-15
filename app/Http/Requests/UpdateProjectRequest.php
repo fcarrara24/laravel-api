@@ -26,7 +26,7 @@ class UpdateProjectRequest extends FormRequest
             'title' => ['required', 'min:3', 'max:200', Rule::unique('projects')->ignore($this->project)],
             'body' => ['nullable'],
             'github' => ['nullable', 'url'],
-            'image' => ['nullable', 'url'],
+            'image' => ['nullable'],
         ];
     }
 
@@ -37,7 +37,6 @@ class UpdateProjectRequest extends FormRequest
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve avere almeno :min caratteri',
             'title.max' => 'Il titolo non deve superare i :max caratteri',
-            'image.url' => 'Il link immagine non è valido',
             'github.url' => 'il sito di riferimento non è scritto in formato valido',
         ];
     }

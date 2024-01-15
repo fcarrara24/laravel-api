@@ -2,7 +2,7 @@
 @section('content')
     <section class="container">
         <h1>Projects Create</h1>
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title">Title</label>
@@ -22,23 +22,47 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="github">Image</label>
-                <input type="url" class="form-control @error('image') is-invalid @enderror" name="github"
-                    id="github">
-                @error('github')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+
+
+
+
+
+
+            <div class="d-flex">
+                <div class="me-3">
+                    <img id="uploadPreview" width="100" src="https://picsum.photos/200/300">
+                </div>
+                <div class="mb-3">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
+                        id="image" value="{{ old('image') }}">
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
+
+
+
+
+
+
+
+            {{-- <div class="d-flex">
+            <div class="me-3">
+                <img src="https://picsum.photos/200/300" alt="" width="100" id="uploadPreview">
+            </div>
             <div class="mb-3">
                 <label for="image">Image</label>
-                <input type="url" class="form-control @error('image') is-invalid @enderror" name="image"
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image">
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+            </div> --}}
+
             <button type="submit" class="btn btn-success">Submit</button>
             <button type="reset" class="btn btn-primary">Reset</button>
         </form>

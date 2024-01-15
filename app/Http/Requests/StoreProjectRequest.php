@@ -24,7 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'min:3', 'max:200', 'unique:projects'],
             'body' => ['nullable'],
-            'image' => ['nullable', 'url'],
+            'image' => ['nullable', 'max:1024'],
             'github' => ['nullable', 'url'],
         ];
     }
@@ -35,7 +35,7 @@ class StoreProjectRequest extends FormRequest
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve avere almeno :min caratteri',
             'title.max' => 'Il titolo non deve superare i :max caratteri',
-            'image.url' => 'Il link immagine non è valido',
+            'image:max' => 'l\'immagine deve essere massimo di :max KB',
             'github.url' => 'Il link di github non è in formato valido',
         ];
     }

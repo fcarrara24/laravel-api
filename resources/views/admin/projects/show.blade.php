@@ -5,7 +5,7 @@
         <p>{{ $project->body }}</p>
         <a href="{{ $project->github }}">{{ $project->github }}</a>
         <br>
-        <img src="$project->image" alt="{{ $project->title }}">
+        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
         <br>
 
         <button class="btn btn-primary d-inline-block">
