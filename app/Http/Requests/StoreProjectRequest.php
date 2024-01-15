@@ -22,19 +22,21 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','min:3', 'max:200', 'unique:projects'],
+            'title' => ['required', 'min:3', 'max:200', 'unique:projects'],
             'body' => ['nullable'],
             'image' => ['nullable', 'url'],
+            'github' => ['nullable', 'url'],
         ];
     }
-    public function messages(){
+    public function messages()
+    {
         return [
             'title.unique' => 'Il titolo deve essere univoco',
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve avere almeno :min caratteri',
             'title.max' => 'Il titolo non deve superare i :max caratteri',
             'image.url' => 'Il link immagine non è valido',
+            'github.url' => 'Il link di github non è in formato valido',
         ];
     }
 }
-

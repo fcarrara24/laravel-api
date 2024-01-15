@@ -18,6 +18,7 @@ class ProjectSeeder extends Seeder
         foreach ($projects as $project) {
             $newProject = new Project();
             $newProject->image = $project['image'];
+            $newProject->github = $project['github'];
             $newProject->title = $project['title'];
             $newProject->body = $project['body'];
             $newProject->user_id = 1;

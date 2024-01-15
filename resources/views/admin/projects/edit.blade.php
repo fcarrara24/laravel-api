@@ -24,6 +24,15 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="github">Github</label>
+                <input type="url" class="form-control @error('github') is-invalid @enderror" name="github"
+                    id="github"  value="{{ old('github', $project->github) }}">
+                @error('github')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="url" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image" value="{{ old('image', $project->image) }}">

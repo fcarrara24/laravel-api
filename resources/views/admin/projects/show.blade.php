@@ -2,7 +2,11 @@
 @section('content')
     <section class="container">
         <h1>{{ $project->title }}</h1>
-        <p>{!! $project->body !!}</p>
+        <p>{{ $project->body }}</p>
+        <a href="{{ $project->github }}">{{ $project->github }}</a>
+        <br>
+        <img src="$project->image" alt="{{ $project->title }}">
+        <br>
 
         <button class="btn btn-primary d-inline-block">
             <a class="text-white text-decoration-none" href="{{ route('admin.projects.edit', $project->id) }}">Edit</a>

@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rule\Unique;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,6 +17,7 @@ return new class extends Migration
             $table->string('title', 200)->unique();
             $table->string('slug', 255)->unique();
             $table->text('body')->nullable();
+            $table->string('github', 255)->nullable();
             $table->string('image', 255)->nullable();
             $table->timestamps();
         });

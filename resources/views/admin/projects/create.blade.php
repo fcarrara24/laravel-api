@@ -23,6 +23,15 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="github">Image</label>
+                <input type="url" class="form-control @error('image') is-invalid @enderror" name="github"
+                    id="github">
+                @error('github')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="url" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image">
