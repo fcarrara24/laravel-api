@@ -9,10 +9,10 @@
         <br>
 
         <button class="btn btn-primary d-inline-block">
-            <a class="text-white text-decoration-none" href="{{ route('admin.projects.edit', $project->id) }}">Edit</a>
+            <a class="text-white text-decoration-none" href="{{ route('admin.projects.edit', $project->slug) }}">Edit</a>
         </button>
 
-        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline">
+        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST" class="d-inline">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger cancel-button">Delete</button>

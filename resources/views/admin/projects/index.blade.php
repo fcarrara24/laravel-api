@@ -29,18 +29,18 @@
                     <tr>
                         <td>{{ $project->title }}</td>
                         <td>
-                            <a href="{{ route('admin.projects.show', $project->id) }}" class="text-success">
+                            <a href="{{ route('admin.projects.show', $project->slug) }}" class="text-success">
                                 mostra
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('admin.projects.edit', $project->id) }}" class="text-warning">
+                            <a href="{{ route('admin.projects.edit', $project->slug) }}" class="text-warning">
                                 modifica
                             </a>
                         </td>
                         <td>
 
-                            <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->id) }}"
+                            <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->slug) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
