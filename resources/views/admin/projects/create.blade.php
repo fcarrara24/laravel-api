@@ -28,6 +28,26 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="category_id">select category_id</label>
+                                <select type="text" class="form-control @error('category_id') is-invalid @enderror"
+                                    name="category_id" id="category_id">
+
+                                    <option value="" selected>select a category</option>
+                                    @foreach ($categories as $category)
+                                        {{-- metto la selezione della cat. se preso --}}
+                                        <option value="{{ $category->id }}">
+
+                                            {{-- {{ old('category_id') == $project->category_id ? 'selected' : '' }} --}}
+
+                                            {{ $category->name }}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="image">Image</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror"
                                     name="image" id="image" value="{{ old('image') }}">

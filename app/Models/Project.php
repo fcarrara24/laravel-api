@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'title', 'slug', 'body', 'image'];
+    protected $fillable = ['user_id', 'title', 'slug', 'body', 'image', 'category_id'];
 
     public static function getSlug($title)
     {
@@ -21,5 +21,20 @@ class Project extends Model
             $count++;
         }
         return $slug;
+    }
+
+    /**
+     * Get the user that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsTO(Category::class);
     }
 }

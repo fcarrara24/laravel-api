@@ -201,6 +201,58 @@ Route::fallback(function() {
     return redirect()->route('admin.dashboard');
 });
 
+
+
+# 1 teminare le relazioni 
+``` bash
+ php artisan make:migration update_projects_table --table=projects
+```
+``` php
+public function up(): void
+    {
+        Schema::table('projects', function (Blueprint $table) {
+            $table
+                ->unsignedBigInteger('category_id')
+                ->nullable()
+                ->after('user_id');
+            //costrained significa di andare a prendere la category con l'id ( abbiamo rispettato la convenzione dei nomi )
+            $table
+                ->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->nullOnDelete()
+                ->constrained();
+        });
+    }
+
+   public function down(): void
+    {
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropForeign('projects_category_id_foreign');
+            $table->dropColumn('category_ id');
+        });
+    }
+
+
+    // model del padre
+    public function projects()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    //model del figlio
+    public static function getSlug($title)
+    {
+        $slug = Str::of($title)->slug('-');
+        $count = 1;
+
+        while (Project::where('slug', $slug)->first()) {
+            $slug = Str::of($title)->slug('-') . "-{$count}";
+            $count++;
+        }
+        return $slug;
+    }
+
 ```
 
 # ASSIGNMENT
