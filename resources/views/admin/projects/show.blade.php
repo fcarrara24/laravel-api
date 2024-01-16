@@ -7,6 +7,10 @@
 
                 <p>{{ $project->body }}</p>
                 <a href="{{ $project->github }}">{{ $project->github }}</a>
+                {{-- type --}}
+                @if ($project->type_id)
+                    <a href="{{ $project->type_id }}">{{ $project->type_id }}</a>
+                @endif
                 <br>
                 <br>
                 <div class="d-flex flex-row">

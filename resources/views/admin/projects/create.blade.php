@@ -28,22 +28,22 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="category_id">select category_id</label>
-                                <select type="text" class="form-control @error('category_id') is-invalid @enderror"
-                                    name="category_id" id="category_id">
+                                <label for="type_id">select a type</label>
+                                <select type="text" class="form-control @error('type_id') is-invalid @enderror"
+                                    name="type_id" id="type_id">
 
-                                    <option value="" selected>select a category</option>
-                                    @foreach ($categories as $category)
+                                    <option value="" selected>select a type</option>
+                                    @foreach ($types as $type)
                                         {{-- metto la selezione della cat. se preso --}}
-                                        <option value="{{ $category->id }}">
+                                        <option value="{{ $type->id }}">
 
-                                            {{-- {{ old('category_id') == $project->category_id ? 'selected' : '' }} --}}
+                                            {{-- {{ old('type_id') == $project->type_id ? 'selected' : '' }} --}}
 
-                                            {{ $category->name }}</option>
+                                            {{ $type->name }}</option>
                                     @endforeach
 
                                 </select>
-                                @error('category_id')
+                                @error('type_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
+use App\Models\Type;
 use App\Models\Category;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -27,8 +28,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.projects.create', compact('categories'));
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -46,8 +47,8 @@ class ProjectController extends Controller
             $path = Storage::put('images', $formData['image']);
             $formData['image'] = $path;
         }
-        //dd($path);
-
+        // dd($path);
+        // dd($formData);
         $project = Project::create($formData);
         return redirect()->route('admin.projects.show', $project->slug);
     }
@@ -65,8 +66,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $categories = Category::all();
-        return view('admin.projects.edit', compact('project', 'categories'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -75,6 +76,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $formData = $request->validated();
+        //dd($project);
         $formData['slug'] = $project->slug;
 
         if ($project->title !== $formData['title']) {
@@ -82,7 +84,7 @@ class ProjectController extends Controller
             $formData['slug'] = $slug;
         }
         $formData['user_id'] = $project->user_id;
-
+        $formData['title'] = $project->title;
         if ($request->hasFile('image')) {
             if ($project->image) {
                 Storage::delete($project->image);

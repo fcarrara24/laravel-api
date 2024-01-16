@@ -27,6 +27,7 @@ class StoreProjectRequest extends FormRequest
             'image' => ['nullable', 'max:1024', 'mimes:jpg,png,gif'],
             'github' => ['nullable', 'url'],
             'category_id' => ['nullable', 'exists:categories,id'],
+            'type_id' => ['nullable', 'exists:categories,id'],
         ];
     }
     public function messages()

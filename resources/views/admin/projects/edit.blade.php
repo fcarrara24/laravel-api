@@ -26,6 +26,30 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        {{-- type --}}
+                        <div class="mb-3">
+                            <label for="type_id">select a type</label>
+                            <select type="text" class="form-control @error('type_id') is-invalid @enderror"
+                                name="type_id" id="type_id">
+
+                                <option value="" selected>select a type</option>
+                                @foreach ($types as $type)
+                                    {{-- metto la selezione della cat. se preso --}}
+                                    <option value="{{ $type->id }}">
+
+                                        {{-- {{ old('type_id') == $project->type_id ? 'selected' : '' }} --}}
+
+                                        {{ $type->name }}</option>
+                                @endforeach
+
+                            </select>
+                            @error('type_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+
                         <div class="mb-3">
                             <label for="github">Github</label>
                             <input type="url" class="form-control @error('github') is-invalid @enderror" name="github"

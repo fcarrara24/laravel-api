@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                <button type="button" class="btn btn-danger">Elimina</button>
+                <button type="button" class="btn btn-danger confirm-cancel">Elimina</button>
             </div>
         </div>
     </div>

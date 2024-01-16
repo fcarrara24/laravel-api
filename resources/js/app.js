@@ -11,6 +11,7 @@ deleteSubmitButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
         event.preventDefault();
 
+
         const dataTitle = button.getAttribute("data-item-title");
 
         const modal = document.getElementById("deleteModal");
@@ -21,9 +22,10 @@ deleteSubmitButtons.forEach((button) => {
         const modalItemTitle = modal.querySelector("#modal-item-title");
         modalItemTitle.textContent = dataTitle;
 
-        const buttonDelete = modal.querySelector("button.btn-primary");
+        const buttonDelete = modal.querySelector("button.confirm-cancel");
 
         buttonDelete.addEventListener("click", () => {
+
             button.parentElement.submit();
         });
     });
@@ -41,3 +43,5 @@ previewImage.addEventListener("change", (event) => {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
     };
 });
+
+
