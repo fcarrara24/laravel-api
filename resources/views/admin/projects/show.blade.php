@@ -9,8 +9,10 @@
                 <a href="{{ $project->github }}">{{ $project->github }}</a>
                 {{-- type --}}
                 @if ($project->type_id)
-                    <a href="{{ $project->type_id }}">{{ $project->type_id }}</a>
+                    <a href="{{ route('admin.types.show', $project->type->slug) }}">{{ $project->type->name }}
+                    </a>
                 @endif
+
                 <br>
                 <br>
                 <div class="d-flex flex-row">

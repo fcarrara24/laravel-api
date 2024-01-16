@@ -38,7 +38,7 @@ class Project extends Model
         return $this->belongsTO(Category::class);
     }
 
-    public function types()
+    public function type()
     {
         return $this->belongsTO(Type::class);
     }

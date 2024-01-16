@@ -84,7 +84,7 @@ class ProjectController extends Controller
             $formData['slug'] = $slug;
         }
         $formData['user_id'] = $project->user_id;
-        $formData['title'] = $project->title;
+        //$formData['title'] = $project->title;
         if ($request->hasFile('image')) {
             if ($project->image) {
                 Storage::delete($project->image);

@@ -3,8 +3,8 @@
     <section class="container">
         <h1 class=" text-center p-4">{{ $type->name }}</h1>
 
-        @foreach ($type->projects() as $project)
-            <div>{{ $project->name }}</div>
+        @foreach ($type->projects as $project)
+            <div>{{ $project->title }}</div>
         @endforeach
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div class="d-flex flex-column @if ($type->image) w-50 @else w-100 @endif">
