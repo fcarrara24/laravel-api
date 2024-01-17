@@ -27,6 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'body' => ['nullable'],
             'github' => ['nullable', 'url'],
             'image' => ['nullable', 'max:1024', 'mimes:jpg,png,gif'],
+            'type_id' => ['nullable', 'exists:types,id'],
             'projects' => ['exists:projects,id'],
         ];
     }

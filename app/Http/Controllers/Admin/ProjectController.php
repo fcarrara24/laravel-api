@@ -83,6 +83,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        //dd($request);
         $formData = $request->validated();
         //dd($project);
         $formData['slug'] = $project->slug;
