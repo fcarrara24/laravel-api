@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <section class="container">
-        <h1>categories Create</h1>
+        <h1>technologies Create</h1>
         <div class="card p-4">
-            <form action="{{ route('admin.categories.store') }}" method="POST">
+            <form action="{{ route('admin.technologies.store') }}" method="POST">
                 @csrf
                 <div class="d-flex flex-row justify-content-evenly flex-nowrap h-100">
                     <div class="w-75">

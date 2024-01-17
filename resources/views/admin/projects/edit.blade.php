@@ -48,7 +48,47 @@
                             @enderror
                         </div>
 
+                        {{-- <div class="mb-3">
+                            <label for="type_id">Select type</label>
+                            <select class="form-control @error('type_id') is-invalid @enderror" name="type_id"
+                                id="type_id">
+                                <option value="">Select a type</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}"
+                                        {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>
+                                        {{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div> --}}
 
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <h6>Select technologies</h6>
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check @error('technologies') is-invalid @enderror">
+                                        @if ($errors->any())
+                                            <input type="checkbox" class="form-check-input" name="technologies[]"
+                                                value="{{ $technology->id }}"
+                                                {{ in_array($technology->id, old('technologies', $project->technologies)) ? 'checked' : '' }}>
+                                        @else
+                                            <input type="checkbox" class="form-check-input" name="technologies[]"
+                                                value="{{ $technology->id }}"
+                                                {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                        @endif
+                                        <label class="form-check-label">
+
+                                            {{ $technology->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                                @error('technologies')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="mb-3">
                             <label for="github">Github</label>
@@ -66,7 +106,11 @@
                                 @enderror
                             </div>
                         </div>
+
+
                     </div>
+
+
                     <div class="d-flex p-4 ">
                         <div class="framed w-100 " style="height: fit-content;">
                             <img id="uploadPreview" style="width: 100%; "

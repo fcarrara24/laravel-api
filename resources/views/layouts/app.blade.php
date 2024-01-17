@@ -58,6 +58,10 @@
                             <a class="nav-link {{ Route::currentRouteName() == 'admin.types.index' ? 'active' : '' }}"
                                 href="{{ route('admin.types.index') }}">Types</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'admin.technologies.index' ? 'active' : '' }}"
+                                href="{{ route('admin.technologies.index') }}">Technologies</a>
+                        </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

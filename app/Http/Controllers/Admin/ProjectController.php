@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
-use App\Models\Category;
+use App\Models\Technology;
+//use App\Models\Category;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -47,9 +49,14 @@ class ProjectController extends Controller
             $path = Storage::put('images', $formData['image']);
             $formData['image'] = $path;
         }
-        // dd($path);
-        // dd($formData);
+        //to fix
+
+        // $technology = Technology::create($formData);
         $project = Project::create($formData);
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
+
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
@@ -67,7 +74,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -94,6 +102,9 @@ class ProjectController extends Controller
         }
 
         $project->update($formData);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        }
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
@@ -102,6 +113,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $projects->technologies > detouch();
         if ($project->image) {
             Storage::delete($project->image);
         }

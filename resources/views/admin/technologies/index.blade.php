@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="container card p-5 mt-5 ">
-        <h1 class="text-center">categories List</h1>
+        <h1 class="text-center">technologies List</h1>
 
         @if (!empty(session('message')))
             <div class="alert alert-success" role="alert">
@@ -25,42 +25,37 @@
 
             <tbody>
 
-                @foreach ($categories as $category)
+                @foreach ($technologies as $technology)
                     <tr>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $technology->name }}</td>
 
                         <td class="d-flex flex-row justify-content-end align-items-center">
-                            {{-- <a href="{{ route('admin.categories.show', $category->slug) }}" class="text-success">
-                                mostra
-                            </a>
-                            <a href="{{ route('admin.categories.edit', $category->slug) }}" class="text-warning">
-                                modifica
-                            </a> --}}
-                            <form class="d-inline-block" action="{{ route('admin.categories.show', $category->slug) }}"
+
+                            <form class="d-inline-block" action="{{ route('admin.technologies.show', $technology->slug) }}"
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-success cancel-button" type="submit">
+                                <button class="btn btn-success cancel-button" $technology="submit">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
 
                             </form>
 
-                            <form class="d-inline-block" action="{{ route('admin.categories.edit', $category->slug) }}"
+                            <form class="d-inline-block" action="{{ route('admin.technologies.edit', $technology->slug) }}"
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-warning cancel-button" type="submit">
+                                <button class="btn btn-warning cancel-button" $technology="submit">
                                     <i class="fa-solid fa-wrench"></i>
                                 </button>
 
                             </form>
 
-                            <form class="d-inline-block" action="{{ route('admin.categories.destroy', $category->slug) }}"
+                            <form class="d-inline-block" action="{{ route('admin.technologies.destroy', $technology->slug) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger cancel-button delete-button" type="submit">
+                                <button class="btn btn-danger cancel-button delete-button" $technology="submit">
                                     <i class="fa-solid fa-trash"></i>
                             </form>
 
@@ -76,7 +71,7 @@
 
         <button class="btn btn-primary mt-3 d-block">
             <a class="text-white text-decoration-none " style="width: fit-content;"
-                href="{{ route('admin.categories.create') }}">Create</a>
+                href="{{ route('admin.technologies.create') }}">Create</a>
         </button>
     </section>
 @endsection

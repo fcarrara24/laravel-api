@@ -47,6 +47,26 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            {{-- technology --}}
+                            <div class="mb-3">
+                                <h5>technologies</h5>
+
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check @error('tags') is-invalid @enderror">
+                                        <input type="checkbox" class="form-check-input" name="technologies[]"
+                                            value="{{ $technology->id }}"
+                                            {{ in_array($technology->id, old('technology', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label ">
+                                            {{ $technology->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+
+                                </select>
+                                @error('technology_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <label for="image">Image</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror"

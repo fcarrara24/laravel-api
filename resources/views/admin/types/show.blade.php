@@ -14,9 +14,9 @@
                 <div class="d-flex flex-row">
                     <button class="btn btn-primary d-inline-block">
                         <a class="text-white text-decoration-none"
-                            href="{{ route('admin.categories.edit', $type->slug) }}">Edit</a>
+                            href="{{ route('admin.types.edit', $type->slug) }}">Edit</a>
                     </button>
-                    <form action="{{ route('admin.categories.destroy', $type->slug) }}" method="POST" class="d-inline">
+                    <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger cancel-button delete-button">Delete</button>
