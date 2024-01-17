@@ -1,20 +1,41 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
+    <section class="container card p-5 mt-5">
         <h1 class=" text-center p-4">{{ $technology->name }}</h1>
-        @if ($technology->projects)
-            <ul>
-                @foreach ($technology->projects as $project)
-                    {{-- <div>{{ $project->title }}</div> --}}
 
-                    <a href="{{ route('admin.projects.show', $project->slug) }}"
-                        class="link-underline link-underline-opacity-0">
-                        {{ $project->title }}</a>
-                @endforeach
-            </ul>
-        @else
-            <div>no project found</div>
-        @endif
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                <th scope="col">PROGETTI</th>
+                <td scope="col">DESCRIZIONE</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @forelse ($technology->projects as $project)
+                    <tr>
+                        <th class="list-group-item">
+                            <a href="{{ route('admin.projects.show', $project->slug) }}"
+                                class="link-underline link-underline-opacity-0">
+                                {{ $project->title }}</a>
+                        </th>
+                        <td>
+                            {{$project->description}}
+                        </td>
+
+                    </tr>
+                    @empty
+                    <tr>
+                        <th>
+                            non ci sono progetti della tipologia {{$type->name}}
+                        </th>
+                    </tr>
+                @endforelse
+
+
+            </tbody>
+            </table>
+
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div class="d-flex flex-column @if ($technology->image) w-50 @else w-100 @endif">
 

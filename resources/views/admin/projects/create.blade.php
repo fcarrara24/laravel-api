@@ -78,8 +78,8 @@
                         </div>
                     </div>
                     <div class="d-flex p-3 framed">
-
-                        <img id="uploadPreview" style="width: 100%;" src="https://picsum.photos/400/250">
+                        {{-- src="https://picsum.photos/400/250" --}}
+                        <img id="uploadPreview" style="width: 100%;" src="https://via.placeholder.com/600x400">
 
                     </div>
                 </div>
