@@ -3,9 +3,15 @@
     <section class="container">
         <h1 class=" text-center p-4">{{ $technology->name }}</h1>
         @if ($technology->projects)
-            @foreach ($technology->projects as $project)
-                <div>{{ $project->title }}</div>
-            @endforeach
+            <ul>
+                @foreach ($technology->projects as $project)
+                    {{-- <div>{{ $project->title }}</div> --}}
+
+                    <a href="{{ route('admin.projects.show', $project->slug) }}"
+                        class="link-underline link-underline-opacity-0">
+                        {{ $project->title }}</a>
+                @endforeach
+            </ul>
         @else
             <div>no project found</div>
         @endif

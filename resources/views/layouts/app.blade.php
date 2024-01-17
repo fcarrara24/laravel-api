@@ -51,15 +51,15 @@
                                 href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'admin.projects.index' ? 'active' : '' }}"
+                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'admin.projects') ? 'active' : '' }}"
                                 href="{{ route('admin.projects.index') }}">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'admin.types.index' ? 'active' : '' }}"
+                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'admin.types') ? 'active' : '' }}"
                                 href="{{ route('admin.types.index') }}">Types</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'admin.technologies.index' ? 'active' : '' }}"
+                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'admin.technologies') ? 'active' : '' }}"
                                 href="{{ route('admin.technologies.index') }}">Technologies</a>
                         </li>
                     </ul>
