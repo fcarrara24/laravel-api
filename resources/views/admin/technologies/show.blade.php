@@ -27,7 +27,7 @@
                     @empty
                     <tr>
                         <th>
-                            non ci sono progetti della tipologia {{$type->name}}
+                            non ci sono progetti della tipologia {{$technology->name}}
                         </th>
                     </tr>
                 @endforelse

@@ -114,7 +114,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $projects->technologies > detouch();
+        //$projects->technologies > detouch();
         if ($project->image) {
             Storage::delete($project->image);
         }
