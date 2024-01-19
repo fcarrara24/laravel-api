@@ -256,11 +256,11 @@ public function up(): void
 ```
 
 # ASSIGNMENT
-Milestone 1
+- Milestone 1
 Aggiungiamo al nostro progetto Laravel una nuovo Api/ProjectController. Questo controller risponderà a delle richieste via API e si occuperà di restituire la lista dei progetti presenti nel database in formato json.
-Milestone 2
+- Milestone 2
 Testiamo la chiamata API tramite browser e assicuriamoci di ricevere i dati correttamente.
-Milestone 3
+- Milestone 3
 Progettiamo il nostro front-office (aiutandoci con figma) per farci un'idea di quali end-point API avremo bisogno
 Bonus
 se volete preparate una nuova repo (nome repo: vite-boolfolio)
