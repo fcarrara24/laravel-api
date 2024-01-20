@@ -4,6 +4,8 @@
         <div class="card p-5 mt-5">
             <h1 class=" text-center p-4">{{ $type->name }}</h1>
             <h2></h2>
+
+            @if(count($type->projects))
             <table class="table table-striped ">
             <thead>
             <tr>
@@ -14,7 +16,7 @@
             </thead>
             <tbody>
 
-                @forelse ($type->projects as $project)
+                @foreach ($type->projects as $project)
                     <tr>
                         <th class="list-group-item">
                             <a href="{{ route('admin.projects.show', $project->slug) }}"
@@ -22,21 +24,19 @@
                                 {{ $project->title }}</a>
                         </th>
                         <td>
-                            {{$project->description}}
+                            {{$project->body ?? $project->github}}
                         </td>
                     </tr>
-                    @empty
-                    <tr>
-                        <th>
-                            non ci sono progetti della tipologia {{$type->name}}
-                        </th>
-                    </tr>
-                @endforelse
+                @endforeach
 
 
             </tbody>
             </table>
-
+            @else
+            <div class="text-center">
+                non ci sono progetti della tipologia {{$type->name}}
+            </div>
+            @endif
 
 
             <div class="d-flex flex-row justify-content-between align-items-center">

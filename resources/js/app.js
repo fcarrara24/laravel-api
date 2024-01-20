@@ -31,17 +31,40 @@ deleteSubmitButtons.forEach((button) => {
     });
 });
 
-const previewImage = document.getElementById("image");
-previewImage.addEventListener("change", (event) => {
-    var oFReader = new FileReader();
-    // var image  =  previewImage.files[0];
-    // console.log(image);
-    oFReader.readAsDataURL(previewImage.files[0]);
 
-    oFReader.onload = function (oFREvent) {
-        //console.log(oFREvent);
-        document.getElementById("uploadPreview").src = oFREvent.target.result;
-    };
-});
+const previewImage = document.getElementById("image");
+if (previewImage) {
+    previewImage.addEventListener("change", (event) => {
+        var oFReader = new FileReader();
+        // var image  =  previewImage.files[0];
+        // console.log(image);
+        oFReader.readAsDataURL(previewImage.files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            //console.log(oFREvent);
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    });
+}
+
+
+const sidebarToggle = document.body.querySelector("#sidebarToggle");
+if (sidebarToggle) {
+    // Uncomment Below to persist sidebar toggle between refreshes
+    // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+    //     document.body.classList.toggle('sb-sidenav-toggled');
+    // }
+    sidebarToggle.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        document.body.classList.toggle("sb-sidenav-toggled");
+        localStorage.setItem(
+            "sb|sidebar-toggle",
+            document.body.classList.contains("sb-sidenav-toggled")
+        );
+    });
+}
+
+
 
 

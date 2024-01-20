@@ -20,7 +20,7 @@
 
                 {{-- technologies --}}
 
-                @if ($project->technologies)
+                @if (count($project->technologies))
                     <div class="mb-3">
                         <h4>technologies</h4>
                         @foreach ($project->technologies as $technology)

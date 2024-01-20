@@ -3,38 +3,36 @@
     <section class="container card p-5 mt-5">
         <h1 class=" text-center p-4">{{ $technology->name }}</h1>
 
-        <table class="table table-striped ">
-            <thead>
-                <tr>
-                <th scope="col">PROGETTI</th>
-                <td scope="col">DESCRIZIONE</td>
-                </tr>
-            </thead>
-            <tbody>
-
-                @forelse ($technology->projects as $project)
+        @if (count($technology->projects))
+            <table class="table table-striped ">
+                <thead>
                     <tr>
-                        <th class="list-group-item">
-                            <a href="{{ route('admin.projects.show', $project->slug) }}"
-                                class="link-underline link-underline-opacity-0">
-                                {{ $project->title }}</a>
-                        </th>
-                        <td>
-                            {{$project->description}}
-                        </td>
-
+                        <th scope="col">PROGETTI</th>
+                        <td scope="col">DESCRIZIONE</td>
                     </tr>
-                    @empty
-                    <tr>
-                        <th>
-                            non ci sono progetti della tipologia {{$technology->name}}
-                        </th>
-                    </tr>
-                @endforelse
+                </thead>
+                <tbody>
+
+                    @foreach ($technology->projects as $project)
+                        <tr>
+                            <th class="list-group-item">
+                                <a href="{{ route('admin.projects.show', $project->slug) }}"
+                                    class="link-underline link-underline-opacity-0">
+                                    {{ $project->title }}</a>
+                            </th>
+                            <td>
+                                {{ $project->body ?? $project->github }}
+                            </td>
+
+                        </tr>
+                    @endforeach
 
 
-            </tbody>
+                </tbody>
             </table>
+        @else
+            <div class="text-center ">non ci sono progetti della tipologia {{ $technology->name }}</div>
+        @endif
 
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div class="d-flex flex-column @if ($technology->image) w-50 @else w-100 @endif">
