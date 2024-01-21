@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <section class="container">
+    <section class="container py-3">
+
+        <div class="card p-3 py-5">
         <h1>Edit {{ $technology->name }} </h1>
-        <div class="card p-3">
+
             <form action="{{ route('admin.technologies.update', $technology) }}" method="POST" >
                 @csrf
                 @method('PUT')
@@ -21,9 +23,9 @@
 
                 </div>
 
-               
-                <button technology="submit" class="btn btn-success">Submit</button>
-                <button technology="reset" class="btn btn-primary">Reset</button>
+
+                <button technology="submit" class="my-btn-primary">Submit</button>
+                <button technology="reset" class="my-btn-primary">Reset</button>
             </form>
         </div>
     </section>

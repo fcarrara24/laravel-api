@@ -1,4 +1,4 @@
-@use './partials/variables' as *;
+@use './partials/_variables' as *;
 
 $fa-font-path: "../fonts/webfonts" !default;
 
@@ -9,27 +9,59 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 @import '~bootstrap/scss/bootstrap';
 
-// h1 {
-//     color: $text-color;
 
-// }
-.navbar{
-    background-color: aqua;
-    a{
-        color: white;
-
+a.dropdown-item{
+    color: #{$primary-back};
+    &:hover{
+        background-color: #{$primary-back};
+        color: #{$secondary-back};
     }
+}
+// .navbar{
+//     background-color: aqua;
+//     a{
+//         color: white;
+
+//     }
+// }
+
+.page-item{
+    background-color: #{$secondary-back};
+}
+
+.page-item.active{
+    background-color: #{$primary-back};
 }
 
 h1 {
     font-size: 72px;
-    background: -webkit-linear-gradient(orange, gold);
+    background: #{$primary-back};
     -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: brown;
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.invisible-button{
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+.color-secondary-back{
+    color: #{$secondary-back};
+}
+
+.color-primary-back{
+    color: #{$primary-back};
+}
+
+.my-btn-primary{
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    color: #{$primary-back};
+}
 i{
     cursor: pointer;
 }
@@ -46,26 +78,36 @@ form{
 }
 
 
-.framed{
-    border: 10px solid;
-    border-image: linear-gradient(45deg,red,blue) 10;
-    img{
-        min-width: 100%;
-    }
+// .framed{
+//     border: 10px solid;
+//     border-image: linear-gradient(45deg,red,blue) 10;
+//     img{
+//         min-width: 100%;
+//     }
+// }
+
+
+.navbar-dark{
+    background-color: #{$primary-contrast}!important;
+  }
+
+main{
+    background-color: #{$primary-back};
+}
+
+footer{
+    background-color: #{$secondary-back};
 }
 
 
-.dropdown-item{
-    color: blue!important;
-    &:hover{
-        background-color: aqua;
-        color: white;
-    }
+#layoutSidenav_content{
+    background-color: #{$primary-back};
 }
 
 
-
-
+.card{
+    background-color: #{$secondary-back};
+}
 
 
 
@@ -214,7 +256,7 @@ form{
     margin: 0;
   }
   .sb-topnav.navbar-dark #sidebarToggle {
-    color: rgba(255, 255, 255, 0.5);
+    color: #{$secondary-contrast};
   }
   .sb-topnav.navbar-light #sidebarToggle {
     color: #212529;
@@ -267,7 +309,7 @@ form{
   }
 
   .sb-sidenav-dark {
-    background-color: #212529;
+    background-color: #{$primary-contrast};
     color: rgba(255, 255, 255, 0.5);
   }
   .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
@@ -292,7 +334,7 @@ form{
     color: #fff;
   }
   .sb-sidenav-dark .sb-sidenav-footer {
-    background-color: #343a40;
+    background-color: #{$secondary-contrast};
   }
 
   .sb-sidenav-light {
@@ -326,15 +368,15 @@ form{
 
   /* datatable + bootstrap */
   .table, .datatable-table {
-    --bs-table-color: var(--bs-body-color);
+    --bs-table-color: var(--secondary-contrast);
     --bs-table-bg: transparent;
     --bs-table-border-color: var(--bs-border-color);
     --bs-table-accent-bg: transparent;
-    --bs-table-striped-color: var(--bs-body-color);
+    --bs-table-striped-color: var(--secondary-contrast);
     --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-    --bs-table-active-color: var(--bs-body-color);
+    --bs-table-active-color: var(--secondary-contrast);
     --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-    --bs-table-hover-color: var(--bs-body-color);
+    --bs-table-hover-color: var(--secondary-contrast);
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
     width: 100%;
     margin-bottom: 1rem;
@@ -749,9 +791,9 @@ form{
   }
   .page-link.active, .datatable-pagination a.active, .active > .page-link, .datatable-pagination .active > a {
     z-index: 3;
-    color: var(--bs-pagination-active-color);
-    background-color: var(--bs-pagination-active-bg);
-    border-color: var(--bs-pagination-active-border-color);
+    color: white;
+     background-color: #{$primary-back};
+    border-color: #{$primary-back};
   }
   .page-link.disabled, .datatable-pagination a.disabled, .disabled > .page-link, .datatable-pagination .disabled > a {
     color: var(--bs-pagination-disabled-color);

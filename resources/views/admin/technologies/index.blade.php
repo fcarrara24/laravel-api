@@ -1,7 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <section class="container card p-5 mt-5 ">
         <h1 class="text-center">technologies List</h1>
+
+        <div class="d-flex flex-row justify-content-end w-100 ">
+            <button class="color-primary-back invisible-button m-4 d-block ">
+                <a class=" text-decoration-none color-primary-back invisible-button" style="width: fit-content;"
+                    href="{{ route('admin.technologies.create') }}"><i class="fa-solid fa-plus"></i></a>
+            </button>
+        </div>
+
 
         @if (!empty(session('message')))
             <div class="alert alert-success" role="alert">
@@ -35,7 +43,7 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-success cancel-button" $technology="submit">
+                                <button class="my-btn-primary cancel-button" type="submit">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
 
@@ -45,17 +53,17 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-warning cancel-button" $technology="submit">
+                                <button class="my-btn-primary cancel-button" type="submit">
                                     <i class="fa-solid fa-wrench"></i>
                                 </button>
 
                             </form>
 
-                            <form class="d-inline-block" action="{{ route('admin.technologies.destroy', $technology->slug) }}"
-                                method="POST">
+                            <form class="d-inline-block"
+                                action="{{ route('admin.technologies.destroy', $technology->slug) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger cancel-button delete-button" $technology="submit">
+                                <button class="my-btn-primary cancel-button delete-button" type="submit">
                                     <i class="fa-solid fa-trash"></i>
                             </form>
 
@@ -68,10 +76,8 @@
             </tbody>
 
         </table>
+        {{ $technologies->links('vendor.pagination.bootstrap-5') }}
 
-        <button class="btn btn-primary mt-3 d-block">
-            <a class="text-white text-decoration-none " style="width: fit-content;"
-                href="{{ route('admin.technologies.create') }}">Create</a>
-        </button>
+
     </section>
 @endsection

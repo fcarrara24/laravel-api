@@ -1,13 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <section class="container">
-        <h1>technologies Create</h1>
-        <div class="card p-4">
+    <section class="container py-5">
+        <div class="card p-4 ">
+        <h1 class="text-center text-uppercase">technologies Create</h1>
+
             <form action="{{ route('admin.technologies.store') }}" method="POST">
                 @csrf
                 <div class="d-flex flex-row justify-content-evenly flex-nowrap h-100">
                     <div class="w-75">
-                        <div class="container ">
+                        <div >
                             <div class="mb-3">
                                 <label for="name">name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -20,11 +21,12 @@
                         </div>
                     </div>
 
-
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+
             </form>
+            <button type="submit" class=" my-btn-primary">Submit</button>
+            <button type="reset" class=" my-btn-primary">Reset</button>
+
         </div>
     </section>
 @endsection

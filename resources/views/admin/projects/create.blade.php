@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <section class="container">
-        <h1>Projects Create</h1>
+    <section class="container py-4">
         <div class="card p-4">
+        <h1 class="text-center text-uppercase">Projects Create</h1>
+
             <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex flex-row justify-content-evenly flex-nowrap h-100">
@@ -48,24 +49,29 @@
                                 @enderror
                             </div>
                             {{-- technology --}}
-                            <div class="mb-3">
-                                <h5>technologies</h5>
+                            <div class="mb-3 d-flex flex-row justify-content-center ">
+                                <div class="w-75">
+                                    <h5>technologies</h5>
+                                    @foreach ($technologies as $technology)
+                                        <div class="form-check @error('tags') is-invalid @enderror">
+                                            <input type="checkbox" class="form-check-input" name="technologies[]"
+                                                value="{{ $technology->id }}"
+                                                {{ in_array($technology->id, old('technology', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label ">
+                                                {{ $technology->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    </select>
+                                    @error('technology_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="d-flex p-3 w-25">
+                                    {{-- src="https://picsum.photos/400/250" --}}
+                                    <img id="uploadPreview" style="width: 100%;" src="https://via.placeholder.com/600x400">
 
-                                @foreach ($technologies as $technology)
-                                    <div class="form-check @error('tags') is-invalid @enderror">
-                                        <input type="checkbox" class="form-check-input" name="technologies[]"
-                                            value="{{ $technology->id }}"
-                                            {{ in_array($technology->id, old('technology', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label ">
-                                            {{ $technology->name }}
-                                        </label>
-                                    </div>
-                                @endforeach
-
-                                </select>
-                                @error('technology_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="image">Image</label>
@@ -77,15 +83,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex p-3 framed">
-                        {{-- src="https://picsum.photos/400/250" --}}
-                        <img id="uploadPreview" style="width: 100%;" src="https://via.placeholder.com/600x400">
 
-                    </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+
             </form>
+            <button type="submit" class="my-btn-primary">Submit</button>
+            <button type="reset" class="my-btn-primary">Reset</button>
         </div>
     </section>
 @endsection

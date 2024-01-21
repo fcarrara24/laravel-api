@@ -252,7 +252,18 @@ public function up(): void
         }
         return $slug;
     }
+ 
 
+```
+
+
+## to install pagination
+```
+php artisan vendor:publish --tag=laravel-pagination
+```
+### to include that
+```blade
+    {{$projects->links('vendor.pagination.bootstrap-5')}}
 ```
 
 # ASSIGNMENT

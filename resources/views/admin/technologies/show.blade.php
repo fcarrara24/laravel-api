@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <section class="container card p-5 mt-5">
         <h1 class=" text-center p-4">{{ $technology->name }}</h1>
@@ -40,15 +40,15 @@
 
                 <br>
                 <div class="d-flex flex-row">
-                    <button class="btn btn-primary d-inline-block">
-                        <a class="text-white text-decoration-none"
+                    <button class="my-btn-primary d-inline-block">
+                        <a class=" text-decoration-none"
                             href="{{ route('admin.technologies.edit', $technology->slug) }}">Edit</a>
                     </button>
                     <form action="{{ route('admin.technologies.destroy', $technology->slug) }}" method="POST"
                         class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button technology="submit" class="btn btn-danger cancel-button delete-button">Delete</button>
+                        <button technology="submit" class="my-btn-primary cancel-button delete-button">Delete</button>
                     </form>
                     @include('partials.modal_delete')
 

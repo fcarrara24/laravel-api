@@ -24,7 +24,7 @@
         <div id="layoutSidenav">
             @include('partials.sidebar')
             <div id="layoutSidenav_content">
-                <main>
+                <main class="px-5">
                     @yield('content')
                 </main>
                 @include('partials.footer')

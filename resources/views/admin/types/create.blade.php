@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <section class="container">
-        <h1>types Create</h1>
+    <section class="container py-4">
         <div class="card p-4">
+        <h1 class="text-center text-uppercase ">types Create</h1>
+
             <form action="{{ route('admin.types.store') }}" method="POST">
                 @csrf
                 <div class="d-flex flex-row justify-content-evenly flex-nowrap h-100">
@@ -22,8 +23,8 @@
 
 
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+                <div><button type="submit" class="my-btn-primary">Submit</button></div>
+                <div><button type="reset" class="my-btn-primary">Reset</button></div>
             </form>
         </div>
     </section>

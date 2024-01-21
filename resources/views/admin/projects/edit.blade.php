@@ -1,12 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <section class="container">
-        <h1>Edit {{ $project->title }} </h1>
-        <div class="card p-3">
+    <section class="container py-3">
+        <div class="card p-3 py-5">
+            <h1 class=" text-uppercase text-center">Edit {{ $project->title }} </h1>
+
             <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row justify-content-center ">
                     <div class="d-flex flex-column w-75">
                         <div class="mb-3">
                             <label for="title">Title</label>
@@ -26,26 +27,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- type --}}
-                        {{-- <div class="mb-3">
-                            <label for="type_id">select a type</label>
-                            <select type="text" class="form-control @error('type_id') is-invalid @enderror"
-                                name="type_id" id="type_id">
 
-                                <option value="" selected>select a type</option>
-                                @foreach ($types as $type)
-
-                                    <option value="{{ $type->id }}"
-                                        {{ old('type_id') == $project->type_id ? 'selected' : '' }}>
-
-                                        {{ $type->name }}</option>
-                                @endforeach
-
-                            </select>
-                            @error('type_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div> --}}
 
                         <div class="mb-3">
                             <label for="type_id">Select type</label>
@@ -64,28 +46,37 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="form-group">
-                                <h6>Select technologies</h6>
-                                @foreach ($technologies as $technology)
-                                    <div class="form-check @error('technologies') is-invalid @enderror">
-                                        @if ($errors->any())
-                                            <input type="checkbox" class="form-check-input" name="technologies[]"
-                                                value="{{ $technology->id }}"
-                                                {{ in_array($technology->id, old('technologies', $project->technologies)) ? 'checked' : '' }}>
-                                        @else
-                                            <input type="checkbox" class="form-check-input" name="technologies[]"
-                                                value="{{ $technology->id }}"
-                                                {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
-                                        @endif
-                                        <label class="form-check-label">
-
-                                            {{ $technology->name }}
-                                        </label>
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="form-group w-75">
+                                    <h6>Select technologies</h6>
+                                    @foreach ($technologies as $technology)
+                                        <div class="form-check @error('technologies') is-invalid @enderror">
+                                            @if ($errors->any())
+                                                <input type="checkbox" class="form-check-input" name="technologies[]"
+                                                    value="{{ $technology->id }}"
+                                                    {{ in_array($technology->id, old('technologies', $project->technologies)) ? 'checked' : '' }}>
+                                            @else
+                                                <input type="checkbox" class="form-check-input" name="technologies[]"
+                                                    value="{{ $technology->id }}"
+                                                    {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                            @endif
+                                            <label class="form-check-label">
+                                                {{ $technology->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    @error('technologies')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="d-flex p-4 w-25">
+                                    <div class="framed w-100 " style="height: fit-content;">
+                                        <img id="uploadPreview" style="width: 100%; "
+                                            @if ($project->image === '') src="https://picsum.photos/200/300"
+                                            @else
+                                                src="{{ asset('storage/' . $project->image) }}" @endif>
                                     </div>
-                                @endforeach
-                                @error('technologies')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -110,17 +101,10 @@
                     </div>
 
 
-                    <div class="d-flex p-4 ">
-                        <div class="framed w-100 " style="height: fit-content;">
-                            <img id="uploadPreview" style="width: 100%; "
-                                @if ($project->image === '') src="https://picsum.photos/200/300"
-                                @else
-                                    src="{{ asset('storage/' . $project->image) }}" @endif>
-                        </div>
-                    </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="my-btn-primary">Submit</button>
+                <button type="reset" class="my-btn-primary">Reset</button>
+
             </form>
         </div>
     </section>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <section class="container">
         <div class="card p-5 mt-5">
@@ -43,14 +43,14 @@
                 <div class="d-flex flex-column @if ($type->image) w-50 @else w-100 @endif">
                     <br>
                     <div class="d-flex flex-row">
-                        <button class="btn btn-primary d-inline-block">
-                            <a class="text-white text-decoration-none"
+                        <button class="my-btn-primary d-inline-block">
+                            <a class="text-decoration-none"
                                 href="{{ route('admin.types.edit', $type->slug) }}">Edit</a>
                         </button>
                         <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger cancel-button delete-button">Delete</button>
+                            <button type="submit" class="my-btn-primary cancel-button delete-button">Delete</button>
                         </form>
                         @include('partials.modal_delete')
                     </div>

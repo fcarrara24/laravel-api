@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <section class="container card p-5 mt-5 ">
         <h1 class="text-center">types List</h1>
@@ -9,7 +9,12 @@
             </div>
         @endif
 
-
+        <div class="d-flex flex-row justify-content-end w-100 ">
+            <button class="color-primary-back invisible-button m-4 d-block ">
+                <a class=" text-decoration-none color-primary-back invisible-button" style="width: fit-content;"
+                    href="{{ route('admin.types.create') }}"><i class="fa-solid fa-plus"></i></a>
+            </button>
+        </div>
 
 
         <table class="table">
@@ -35,7 +40,7 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-success cancel-button" $type="submit">
+                                <button class="my-btn-primary cancel-button" $type="submit">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
 
@@ -45,7 +50,7 @@
                                 method="GET">
                                 @csrf
 
-                                <button class="btn btn-warning cancel-button" $type="submit">
+                                <button class="my-btn-primary cancel-button" $type="submit">
                                     <i class="fa-solid fa-wrench"></i>
                                 </button>
 
@@ -55,7 +60,7 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger cancel-button delete-button" $type="submit">
+                                <button class="my-btn-primary cancel-button delete-button" $type="submit">
                                     <i class="fa-solid fa-trash"></i>
                             </form>
 
@@ -68,10 +73,8 @@
             </tbody>
 
         </table>
+        {{ $types->links('vendor.pagination.bootstrap-5') }}
 
-        <button class="btn btn-primary mt-3 d-block">
-            <a class="text-white text-decoration-none " style="width: fit-content;"
-                href="{{ route('admin.types.create') }}">Create</a>
-        </button>
+
     </section>
 @endsection
