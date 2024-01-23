@@ -23,7 +23,7 @@
 
 
                 </div>
-                <div><button type="submit" class="my-btn-primary">Submit</button></div>
+                <div><button type="submit"  class="my-btn-primary">Submit</button></div>
                 <div><button type="reset" class="my-btn-primary">Reset</button></div>
             </form>
         </div>

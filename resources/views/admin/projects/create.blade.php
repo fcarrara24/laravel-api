@@ -85,10 +85,10 @@
                     </div>
 
                 </div>
-
+                <button type="submit" class="my-btn-primary">Submit</button>
+                <button type="reset" class="my-btn-primary">Reset</button>
             </form>
-            <button type="submit" class="my-btn-primary">Submit</button>
-            <button type="reset" class="my-btn-primary">Reset</button>
+
         </div>
     </section>
 @endsection
