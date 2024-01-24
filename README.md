@@ -281,3 +281,7 @@ Nel componente principale della nostra Vue App facciamo una chiamata API all’e
 Stampiamo in console i risultati e verifichiamo di ricevere i dati correttamente.
 
 created repository to recive the data passed 
+
+
+Oggi aggiungete al vostro portfolio un form di conatatto che invii una mail (lavorate sule due repo di laravel e vue)
+Buon pomeriggio e buon lavoro ! 

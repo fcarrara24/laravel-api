@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TechnologyController;
 use App\Http\Controllers\Api\TypeController;
+use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ Route::resource('types', TypeController::class)->parameters([
 Route::resource('technologies', TechnologyController::class)->parameters([
     'technolgies' => 'technolgies:slug',
 ]);
+
+Route::post('contacts', [LeadController::class, 'store']);

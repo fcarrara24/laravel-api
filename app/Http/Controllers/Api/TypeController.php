@@ -10,19 +10,13 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $types = Type::paginate(4);
-        return response()->json([
-            'success' => true,
-            'results' => $types,
-        ]);
+        $types = Type::all();
+        return response()->json($types);
     }
 
     public function show($slug)
     {
         $types = Type::where('slug', $slug)->first();
-        return response()->json([
-            'success' => true,
-            'results' => $types,
-        ]);
+        return response()->json($types);
     }
 }
