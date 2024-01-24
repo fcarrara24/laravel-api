@@ -284,4 +284,4 @@ created repository to recive the data passed
 
 
 Oggi aggiungete al vostro portfolio un form di conatatto che invii una mail (lavorate sule due repo di laravel e vue)
-Buon pomeriggio e buon lavoro ! 
+Buon pomeriggio e buon lavoro !.
