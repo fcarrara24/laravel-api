@@ -8,9 +8,14 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::with(['type', 'technologies'])->paginate(6);
+        if ($request->query('type')) {
+            $projects = Project::where('type_id', $request->query('type')) - paginate(6);
+        } else {
+            //$projects = Project::with(['type', 'technologies'])->paginate(6);
+            $projects = Project::paginate(6);
+        }
         return response()->json([
             'success' => true,
             'results' => $projects,
