@@ -11,7 +11,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         if ($request->query('type')) {
-            $projects = Project::where('type_id', $request->query('type')) - paginate(6);
+            $projects = Project::where('type_id', $request->query('type'))->paginate(6);
         } else {
             //$projects = Project::with(['type', 'technologies'])->paginate(6);
             $projects = Project::paginate(6);
